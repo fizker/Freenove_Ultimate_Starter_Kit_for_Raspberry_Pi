@@ -13,6 +13,7 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMinor(from: "0.4.0")),
+		.package(url: "https://github.com/uraimo/SwiftyGPIO.git", .upToNextMajor(from: "1.3.5")),
 	],
 	targets: [
 		.target(
@@ -20,6 +21,7 @@ let package = Package(
 			dependencies: [
 				.product(name: "ArgumentParser", package: "swift-argument-parser"),
 				"P00_0_0_Hello",
+				"P01_1_1_Blink",
 			]
 		),
 		.target(
@@ -28,5 +30,18 @@ let package = Package(
 				.product(name: "ArgumentParser", package: "swift-argument-parser"),
 			]
 		),
+		.target(
+			name: "P01_1_1_Blink",
+			dependencies: [
+				.product(name: "ArgumentParser", package: "swift-argument-parser"),
+				"Shared",
+			]
+		),
+		.target(
+			name: "Shared",
+			dependencies: [
+				"SwiftyGPIO",
+			]
+		)
 	]
 )
