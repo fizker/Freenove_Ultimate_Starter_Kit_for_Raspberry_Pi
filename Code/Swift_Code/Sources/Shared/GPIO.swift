@@ -4,12 +4,17 @@ enum GPIOError: Error {
 	case gpioNotFound
 }
 
-public struct GPIOs {
+public class GPIOs {
+	public let board: SupportedBoard
+	let gpios: [GPIOName: GPIO]
+	public let pwm: PulseWidthModulationHandler?
+
 	public init() {
-		self.gpios = SwiftyGPIO.GPIOs(for: .RaspberryPi3)
+		self.board = .RaspberryPi3
+		self.gpios = SwiftyGPIO.GPIOs(for: board)
+		self.pwm = .init(board: board)
 	}
 
-	let gpios: [GPIOName: GPIO]
 	public func named(_ name: GPIOName) throws -> GPIO {
 		guard let gpio = gpios[name]
 		else { throw GPIOError.gpioNotFound }
