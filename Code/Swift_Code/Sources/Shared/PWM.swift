@@ -15,7 +15,7 @@ public enum PulseWidthModulationError: Error {
 
 public class PulseWidthModulationHandler {
 	let hardwarePWMs: [Int: [GPIOName: PWMOutput]]
-	var channelsInUse: [Int: WeakWrap<PulseWidthModulation>] = [:]
+	var channelsInUse: [Int: WeakWrap<HardwarePulseWidthModulation>] = [:]
 
 	init?(board: SupportedBoard) {
 		guard let hardwarePWMs = SwiftyGPIO.hardwarePWMs(for: board)
@@ -35,7 +35,7 @@ public class PulseWidthModulationHandler {
 					}
 				}
 
-				let pwm = PulseWidthModulation(output)
+				let pwm = HardwarePulseWidthModulation(output)
 				channelsInUse[idx] = .init(pwm)
 
 				return pwm
@@ -46,8 +46,12 @@ public class PulseWidthModulationHandler {
 	}
 }
 
-public class PulseWidthModulation {
-	public let output: PWMOutput
+public protocol PulseWidthModulation {
+	var duty: Float { get set }
+}
+
+public class HardwarePulseWidthModulation: PulseWidthModulation {
+	let output: PWMOutput
 	public var duty: Float = 0 {
 		didSet {
 			output.startPWM(period: 2_000_000, duty: duty)

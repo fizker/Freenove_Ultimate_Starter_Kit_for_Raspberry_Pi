@@ -1,6 +1,11 @@
 import Foundation
 
 @discardableResult
+public func sleep(s: UInt32) -> Int32 {
+	sleep(ms: s * 1_000)
+}
+
+@discardableResult
 public func sleep(ms: UInt32) -> Int32 {
 	sleep(µs: ms * 1_000)
 }

@@ -1,5 +1,8 @@
 import SwiftyGPIO
 
+let HIGH = 1
+let LOW = 0
+
 enum GPIOError: Error {
 	case gpioNotFound
 }

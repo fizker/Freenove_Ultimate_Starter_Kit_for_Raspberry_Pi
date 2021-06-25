@@ -13,7 +13,7 @@ public struct P04_1_1_BreathingLED: ParsableCommand {
 		print("Starting")
 		let gpio = GPIOs()
 
-		guard let pwm = try gpio.pwm?.pwm(named: .P18)
+		guard var pwm = try gpio.pwm?.pwm(named: .P18)
 		else { throw PulseWidthModulationError.notFound }
 
 		while(true) {
