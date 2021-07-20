@@ -4,6 +4,7 @@ import P01_1_1_Blink
 import P02_1_1_ButtonLED
 import P04_1_1_BreathingLED
 import P05_1_1_ColorfulLED
+import P07_1_1_ADC
 
 struct Root: ParsableCommand {
 	static var configuration = CommandConfiguration(
@@ -13,6 +14,7 @@ struct Root: ParsableCommand {
 			P02_1_1_ButtonLED.self,
 			P04_1_1_BreathingLED.self,
 			P05_1_1_ColorfulLED.self,
+			P07_1_1_ADC.self,
 		]
 	)
 }

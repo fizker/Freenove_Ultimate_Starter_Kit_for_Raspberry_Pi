@@ -3,7 +3,7 @@ import SwiftyGPIO
 let HIGH = 1
 let LOW = 0
 
-enum GPIOError: Error {
+public enum GPIOError: Error {
 	case gpioNotFound
 }
 
@@ -23,5 +23,9 @@ public class GPIOs {
 		else { throw GPIOError.gpioNotFound }
 
 		return gpio
+	}
+
+	public func hardwareI2C(pin: Int) throws -> I2C {
+		return try I2C(board: board, pin: pin)
 	}
 }
