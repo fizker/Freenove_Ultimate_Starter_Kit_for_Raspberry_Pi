@@ -25,7 +25,13 @@ public class GPIOs {
 		return gpio
 	}
 
-	public func hardwareI2C(pin: Int) throws -> I2C {
-		return try I2C(board: board, pin: pin)
+	public func hardwareI2C(device: I2C.Device) throws -> I2C {
+		return try I2C(board: board, device: device)
+	}
+
+	deinit {
+		for (_, gpio) in gpios where gpio.direction == .OUT {
+			gpio.value = LOW
+		}
 	}
 }

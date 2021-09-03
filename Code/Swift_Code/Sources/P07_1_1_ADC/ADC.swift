@@ -14,10 +14,10 @@ public struct P07_1_1_ADC: ParsableCommand {
 		let maxValue = 255.0
 
 		let gpio = GPIOs()
-		let adc = try gpio.hardwareI2C(pin: 1)
+		let adc = try gpio.hardwareI2C(device: .new)
 
 		while true {
-			let adcValue = adc.read(pin: 0)
+			let adcValue = adc.read(.a0)
 			let voltage = Double(adcValue) / maxValue * maxVoltage
 			print("ADC value : \(adcValue) ,\tVoltage : \(String(format: "%.2f", voltage))V")
 
