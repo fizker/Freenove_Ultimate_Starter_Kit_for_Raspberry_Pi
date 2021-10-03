@@ -8,6 +8,10 @@ class SoftwarePulseWidthModulation: PulseWidthModulation {
 	let range: UInt32
 	var thread: Thread?
 
+	convenience init(pin: GPIO, duty: Float = 0, hz: UInt32) {
+		self.init(pin: pin, duty: duty, range: hz * 4)
+	}
+
 	init(pin: GPIO, duty: Float = 0, range: UInt32 = 100) {
 		self.pin = pin
 		pin.direction = .OUT
@@ -49,5 +53,10 @@ public extension GPIOs {
 	func softwarePulseWidthModulation(for pinName: GPIOName, duty: Float = 0, range: UInt32 = 100) throws -> PulseWidthModulation {
 		let pin = try self.named(pinName)
 		return SoftwarePulseWidthModulation(pin: pin, duty: duty, range: range)
+	}
+
+	func softwarePulseWidthModulation(for pinName: GPIOName, duty: Float = 0, hz: UInt32) throws -> PulseWidthModulation {
+		let pin = try self.named(pinName)
+		return SoftwarePulseWidthModulation(pin: pin, duty: duty, hz: hz)
 	}
 }
