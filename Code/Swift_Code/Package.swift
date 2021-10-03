@@ -81,6 +81,13 @@ let package = Package(
 			]
 		),
 		.target(
+			name: "P18_2_1_StopWatch",
+			dependencies: [
+				.product(name: "ArgumentParser", package: "swift-argument-parser"),
+				"Shared",
+			]
+		),
+		.target(
 			name: "Shared",
 			dependencies: [
 				"SwiftyGPIO",
