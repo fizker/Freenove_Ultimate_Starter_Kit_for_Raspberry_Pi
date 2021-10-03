@@ -20,23 +20,22 @@ public struct P15_1_1_Sweep: ParsableCommand {
 		let gpio = GPIOs()
 		var servo = try gpio.softwarePulseWidthModulation(for: .P18, hz: 50)
 
-		func write(_ a: Int) {
-			let angle = Float(a).clamped(between: 0, and: 180)
-			let val = (servo_max - servo_min) * angle / 180 + servo_min
-			servo.duty = val
+		func writeAll<T: Sequence>(_ all: T) where T.Element == Float {
+			for value in all {
+				servo.duty = value
+				sleep(ms: 1)
+			}
+			sleep(ms: 500)
 		}
 
+		let angles = (0...180).map { angle -> Float in
+			(servo_max - servo_min) * Float(angle) / 180 + servo_min
+		}
 		while true {
-			for value in 0...180 {
-				write(value)
-				sleep(ms: 1)
-			}
-			sleep(ms: 500)
-			for value in (0...180).reversed() {
-				write(value)
-				sleep(ms: 1)
-			}
-			sleep(ms: 500)
+			print("Going to max")
+			writeAll(angles)
+			print("Going to min")
+			writeAll(angles.reversed())
 		}
 	}
 }
