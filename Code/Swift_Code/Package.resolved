@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "swift-gpio",
+        "repositoryURL": "https://github.com/fizker/swift-gpio.git",
+        "state": {
+          "branch": null,
+          "revision": "304e5862bb21c87befca53b5a05166ddc74b41e0",
+          "version": "0.1.1"
+        }
+      },
+      {
         "package": "SwiftyGPIO",
         "repositoryURL": "https://github.com/uraimo/SwiftyGPIO.git",
         "state": {

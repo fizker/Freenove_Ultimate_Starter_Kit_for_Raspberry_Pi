@@ -1,6 +1,6 @@
 import ArgumentParser
 import Foundation
-import SwiftyGPIO
+import SwiftGPIO
 import Shared
 
 public struct P15_1_1_Sweep: ParsableCommand {
@@ -18,7 +18,7 @@ public struct P15_1_1_Sweep: ParsableCommand {
 
 	public mutating func run() throws {
 		let gpio = GPIOs()
-		var servo = try gpio.softwarePulseWidthModulation(for: .P18, hz: 50)
+		var servo = try gpio.softwarePulseWidthModulation(for: .p18, hz: 50)
 
 		func writeAll<T: Sequence>(_ all: T) where T.Element == Float {
 			for value in all {

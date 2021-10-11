@@ -1,3 +1,4 @@
+import SwiftGPIO
 import SwiftyGPIO
 
 class WeakWrap<T: AnyObject> {
@@ -44,10 +45,6 @@ public class PulseWidthModulationHandler {
 
 		throw PulseWidthModulationError.notFound
 	}
-}
-
-public protocol PulseWidthModulation {
-	var duty: Float { get set }
 }
 
 public class HardwarePulseWidthModulation: PulseWidthModulation {

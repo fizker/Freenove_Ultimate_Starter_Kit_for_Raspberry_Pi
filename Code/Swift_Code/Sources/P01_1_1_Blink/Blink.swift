@@ -1,5 +1,6 @@
 import Foundation
 import ArgumentParser
+import SwiftGPIO
 import Shared
 
 public struct P01_1_1_Blink: ParsableCommand {
@@ -10,16 +11,15 @@ public struct P01_1_1_Blink: ParsableCommand {
 	public func run() throws {
 		let gpio = GPIOs()
 
-		let led = try gpio.named(.P17)
-		led.direction = .OUT
+		let led = try gpio.gpio(pin: .p17, direction: .out)
 
 		while(true) {
 			print("Turning on")
-			led.value = 1
-			sleep(1)
+			led.value = .on
+			sleep(s: 1)
 			print("Turning off")
-			led.value = 0
-			sleep(1)
+			led.value = .off
+			sleep(s: 1)
 		}
 	}
 }

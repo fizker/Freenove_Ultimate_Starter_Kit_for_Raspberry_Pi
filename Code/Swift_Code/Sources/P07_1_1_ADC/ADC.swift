@@ -1,5 +1,5 @@
 import ArgumentParser
-import SwiftyGPIO
+import SwiftGPIO
 import Shared
 
 public struct P07_1_1_ADC: ParsableCommand {

@@ -1,4 +1,5 @@
 import ArgumentParser
+import SwiftGPIO
 import Shared
 
 struct ColorfulLED {
@@ -19,9 +20,9 @@ public struct P05_1_1_ColorfulLED: ParsableCommand {
 
 		let gpio = GPIOs()
 
-		var red = try gpio.softwarePulseWidthModulation(for: .P17)
-		var green = try gpio.softwarePulseWidthModulation(for: .P18)
-		var blue = try gpio.softwarePulseWidthModulation(for: .P27)
+		var red = try gpio.softwarePulseWidthModulation(for: .p17)
+		var green = try gpio.softwarePulseWidthModulation(for: .p18)
+		var blue = try gpio.softwarePulseWidthModulation(for: .p27)
 
 		let range = Array(0..<100).map(Float.init)
 		while(true) {
