@@ -15,8 +15,8 @@ let package = Package(
 		),
 	],
 	dependencies: [
-		.package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMinor(from: "0.4.0")),
-		.package(url: "https://github.com/uraimo/SwiftyGPIO.git", .upToNextMajor(from: "1.3.5")),
+		.package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.3"),
+		.package(url: "https://github.com/uraimo/SwiftyGPIO.git", from: "1.3.9"),
 		.package(url: "https://github.com/fizker/swift-gpio.git", from: "0.1.1"),
 	],
 	targets: [
