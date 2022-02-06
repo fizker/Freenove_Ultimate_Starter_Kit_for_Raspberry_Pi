@@ -15,4 +15,4 @@ node_modules/.bin/serve:
 	rm package.json package-lock.json
 
 host-file-server: node_modules/.bin/serve
-	./node_modules/.bin/serve .build/debug
+	./node_modules/.bin/serve -l 35000 .build/debug
