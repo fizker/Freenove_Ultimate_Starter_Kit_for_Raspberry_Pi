@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/fizker/swift-gpio.git",
         "state": {
           "branch": null,
-          "revision": "304e5862bb21c87befca53b5a05166ddc74b41e0",
-          "version": "0.1.1"
+          "revision": "780c9332b76fca5374f838ae51777eed93159a11",
+          "version": "0.1.2"
         }
       },
       {
