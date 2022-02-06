@@ -27,6 +27,7 @@ let package = Package(
 				"P00_0_0_Hello",
 				"P01_1_1_Blink",
 				"P02_1_1_ButtonLED",
+				"P03_1_1_LightWater",
 				"P04_1_1_BreathingLED",
 				"P05_1_1_ColorfulLED",
 				"P07_1_1_ADC",
@@ -48,6 +49,13 @@ let package = Package(
 		),
 		.target(
 			name: "P02_1_1_ButtonLED",
+			dependencies: [
+				.product(name: "ArgumentParser", package: "swift-argument-parser"),
+				"Shared",
+			]
+		),
+		.target(
+			name: "P03_1_1_LightWater",
 			dependencies: [
 				.product(name: "ArgumentParser", package: "swift-argument-parser"),
 				"Shared",
