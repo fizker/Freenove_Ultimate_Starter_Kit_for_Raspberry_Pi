@@ -8,6 +8,7 @@ import P05_1_1_ColorfulLED
 import P07_1_1_ADC
 import P15_1_1_Sweep
 import P17_1_1_LightWater02
+import P18_1_1_SevenSegmentDisplay
 
 struct Root: ParsableCommand {
 	static var configuration = CommandConfiguration(
@@ -21,6 +22,7 @@ struct Root: ParsableCommand {
 			P07_1_1_ADC.self,
 			P15_1_1_Sweep.self,
 			P17_1_1_LightWater02.self,
+			P18_1_1_SevenSegmentDisplay.self,
 		]
 	)
 }
