@@ -103,6 +103,12 @@ let package = Package(
 				.product(name: "SwiftGPIO", package: "swift-gpio"),
 				"SwiftyGPIO",
 			]
-		)
+		),
+		.testTarget(
+			name: "SharedTests",
+			dependencies: [
+				"Shared",
+			]
+		),
 	]
 )

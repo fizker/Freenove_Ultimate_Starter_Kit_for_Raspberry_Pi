@@ -12,12 +12,37 @@ public extension Array where Element: OptionSet {
 /// The chip converts serial data into parallel data. It has 3 inputs and 8 outputs, allowing the board to control 8 pins with 3.
 public class SN74HC595N {
 	public struct Output: OptionSet, Codable {
+		enum BitsParsingError: Error {
+			case invalidLength, invalidFormat
+		}
+
 		public typealias RawValue = Int
 
 		public var rawValue: RawValue
 
 		public init(rawValue: RawValue) {
 			self.rawValue = rawValue
+		}
+
+		public init(bits: String) throws {
+			if bits.count != 8 {
+				throw BitsParsingError.invalidLength
+			}
+
+			var idx = 0
+			let output = try bits.reversed().map {
+				defer { idx += 1 }
+
+				switch $0 {
+				case "0": return 0
+				case "1": break
+				default: throw BitsParsingError.invalidFormat
+				}
+
+				return 1 << idx
+			}.reduce(0, +)
+			print("turned \(bits) (\(bits.reversed().map(String.init).joined(separator: ""))) into \(output)")
+			rawValue = output
 		}
 
 		public static let output1: Self = .init(rawValue: 1 << 0)
@@ -41,6 +66,15 @@ public class SN74HC595N {
 		]
 		public static var all: Output {
 			allOutputs.combined()
+		}
+
+		public var bits: String {
+			Self.allOutputs
+				// we reverse the order to get the first bit in the end
+				.reversed()
+				// Flipping the presence into 1 or 0
+				.map { contains($0) ? "1" : "0" }
+				.joined(separator: "")
 		}
 	}
 
