@@ -78,6 +78,11 @@ public class SN74HC595N {
 		}
 	}
 
+	public enum OutputUpdateOrder {
+		case highToLow
+		case lowToHigh
+	}
+
 	/// The pin that controls what value the active output should have.
 	///
 	/// p14 on 74HC595N
@@ -93,7 +98,12 @@ public class SN74HC595N {
 	/// p11 on 74HC595N
 	let shiftPin: GPIO
 
-	/// The value to send for enabled outputs. This defaults to `.on`.
+	/// The order that the outputs are updated. The default value is ``.lowToHigh``, which is output 1, output 2, etc.
+	public var outputUpdateOrder: OutputUpdateOrder {
+		didSet { updateOutput() }
+	}
+
+	/// The value to send for enabled outputs. This defaults to ``.on``.
 	public var enabledValue: GPIO.Value {
 		didSet { updateOutput() }
 	}
@@ -123,20 +133,31 @@ public class SN74HC595N {
 		updatePin: GPIO.Pin,
 		shiftPin: GPIO.Pin,
 		enabledOutput: Output = [],
-		enabledValue: GPIO.Value = .on
+		enabledValue: GPIO.Value = .on,
+		outputUpdateOrder: OutputUpdateOrder = .lowToHigh
 	) throws {
 		self.dataPin = try gpioController.gpio(pin: dataPin, direction: .out)
 		self.updatePin = try gpioController.gpio(pin: updatePin, direction: .out)
 		self.shiftPin = try gpioController.gpio(pin: shiftPin, direction: .out)
 		self.enabledOutput = enabledOutput
 		self.enabledValue = enabledValue
+		self.outputUpdateOrder = outputUpdateOrder
 
 		updateOutput()
 	}
 
 	func updateOutput() {
 		updatePin.value = .off
-		for output in Output.allOutputs {
+
+		let outputs: [Output]
+		switch outputUpdateOrder {
+		case .lowToHigh:
+			outputs = Output.allOutputs
+		case .highToLow:
+			outputs = Output.allOutputs.reversed()
+		}
+
+		for output in outputs {
 			let isEnabled = enabledOutput.contains(output)
 			dataPin.value = isEnabled ? enabledValue : disabledValue
 
