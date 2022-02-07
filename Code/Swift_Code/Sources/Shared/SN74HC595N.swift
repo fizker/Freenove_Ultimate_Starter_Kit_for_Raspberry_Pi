@@ -12,12 +12,37 @@ public extension Array where Element: OptionSet {
 /// The chip converts serial data into parallel data. It has 3 inputs and 8 outputs, allowing the board to control 8 pins with 3.
 public class SN74HC595N {
 	public struct Output: OptionSet, Codable {
+		enum BitsParsingError: Error {
+			case invalidLength, invalidFormat
+		}
+
 		public typealias RawValue = Int
 
 		public var rawValue: RawValue
 
 		public init(rawValue: RawValue) {
 			self.rawValue = rawValue
+		}
+
+		public init(bits: String) throws {
+			if bits.count != 8 {
+				throw BitsParsingError.invalidLength
+			}
+
+			var idx = 0
+			let output = try bits.reversed().map {
+				defer { idx += 1 }
+
+				switch $0 {
+				case "0": return 0
+				case "1": break
+				default: throw BitsParsingError.invalidFormat
+				}
+
+				return 1 << idx
+			}.reduce(0, +)
+			print("turned \(bits) (\(bits.reversed().map(String.init).joined(separator: ""))) into \(output)")
+			rawValue = output
 		}
 
 		public static let output1: Self = .init(rawValue: 1 << 0)
@@ -42,6 +67,20 @@ public class SN74HC595N {
 		public static var all: Output {
 			allOutputs.combined()
 		}
+
+		public var bits: String {
+			Self.allOutputs
+				// we reverse the order to get the first bit in the end
+				.reversed()
+				// Flipping the presence into 1 or 0
+				.map { contains($0) ? "1" : "0" }
+				.joined(separator: "")
+		}
+	}
+
+	public enum OutputUpdateOrder {
+		case highToLow
+		case lowToHigh
 	}
 
 	/// The pin that controls what value the active output should have.
@@ -59,7 +98,12 @@ public class SN74HC595N {
 	/// p11 on 74HC595N
 	let shiftPin: GPIO
 
-	/// The value to send for enabled outputs. This defaults to `.on`.
+	/// The order that the outputs are updated. The default value is ``.lowToHigh``, which is output 1, output 2, etc.
+	public var outputUpdateOrder: OutputUpdateOrder {
+		didSet { updateOutput() }
+	}
+
+	/// The value to send for enabled outputs. This defaults to ``.on``.
 	public var enabledValue: GPIO.Value {
 		didSet { updateOutput() }
 	}
@@ -89,20 +133,31 @@ public class SN74HC595N {
 		updatePin: GPIO.Pin,
 		shiftPin: GPIO.Pin,
 		enabledOutput: Output = [],
-		enabledValue: GPIO.Value = .on
+		enabledValue: GPIO.Value = .on,
+		outputUpdateOrder: OutputUpdateOrder = .lowToHigh
 	) throws {
 		self.dataPin = try gpioController.gpio(pin: dataPin, direction: .out)
 		self.updatePin = try gpioController.gpio(pin: updatePin, direction: .out)
 		self.shiftPin = try gpioController.gpio(pin: shiftPin, direction: .out)
 		self.enabledOutput = enabledOutput
 		self.enabledValue = enabledValue
+		self.outputUpdateOrder = outputUpdateOrder
 
 		updateOutput()
 	}
 
 	func updateOutput() {
 		updatePin.value = .off
-		for output in Output.allOutputs {
+
+		let outputs: [Output]
+		switch outputUpdateOrder {
+		case .lowToHigh:
+			outputs = Output.allOutputs
+		case .highToLow:
+			outputs = Output.allOutputs.reversed()
+		}
+
+		for output in outputs {
 			let isEnabled = enabledOutput.contains(output)
 			dataPin.value = isEnabled ? enabledValue : disabledValue
 

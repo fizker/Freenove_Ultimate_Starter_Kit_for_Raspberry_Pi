@@ -33,6 +33,7 @@ let package = Package(
 				"P07_1_1_ADC",
 				"P15_1_1_Sweep",
 				"P17_1_1_LightWater02",
+				"P18_1_1_SevenSegmentDisplay",
 			]
 		),
 		.target(
@@ -98,11 +99,24 @@ let package = Package(
 			]
 		),
 		.target(
+			name: "P18_1_1_SevenSegmentDisplay",
+			dependencies: [
+				.product(name: "ArgumentParser", package: "swift-argument-parser"),
+				"Shared",
+			]
+		),
+		.target(
 			name: "Shared",
 			dependencies: [
 				.product(name: "SwiftGPIO", package: "swift-gpio"),
 				"SwiftyGPIO",
 			]
-		)
+		),
+		.testTarget(
+			name: "SharedTests",
+			dependencies: [
+				"Shared",
+			]
+		),
 	]
 )
