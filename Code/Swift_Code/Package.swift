@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-	name: "Freenove_Kit",
+	name: "kit",
 	platforms: [
 		.macOS(.v10_12),
 	],
 	products: [
 		.executable(
-			name: "Freenove_Kit",
+			name: "kit",
 			targets: ["cli"]
 		),
 	],

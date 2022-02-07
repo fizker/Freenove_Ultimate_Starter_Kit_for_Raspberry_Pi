@@ -10,7 +10,7 @@ import P15_1_1_Sweep
 import P17_1_1_LightWater02
 import P18_1_1_SevenSegmentDisplay
 
-struct Root: ParsableCommand {
+struct Kit: ParsableCommand {
 	static var configuration = CommandConfiguration(
 		subcommands: [
 			P00_0_0_Hello.self,
@@ -27,4 +27,4 @@ struct Root: ParsableCommand {
 	)
 }
 
-Root.main()
+Kit.main()
