@@ -41,7 +41,7 @@ public class SN74HC595N {
 
 				return 1 << idx
 			}.reduce(0, +)
-			print("turned \(bits) (\(bits.reversed().map(String.init).joined(separator: ""))) into \(output)")
+
 			rawValue = output
 		}
 
@@ -163,11 +163,11 @@ public class SN74HC595N {
 
 			// Moves the pin-to-change one forward by switching clock-pin off and on again
 			shiftPin.value = .off
-			sleep(µs: 10)
+			sleep(µs: 1)
 			shiftPin.value = .on
-			sleep(µs: 10)
+			sleep(µs: 1)
 		}
 		updatePin.value = .on
-		sleep(µs: 10)
+		sleep(µs: 1)
 	}
 }

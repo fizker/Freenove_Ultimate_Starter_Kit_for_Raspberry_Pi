@@ -9,6 +9,7 @@ import P07_1_1_ADC
 import P15_1_1_Sweep
 import P17_1_1_LightWater02
 import P18_1_1_SevenSegmentDisplay
+import P18_2_1_StopWatch
 
 struct Kit: ParsableCommand {
 	static var configuration = CommandConfiguration(
@@ -23,6 +24,7 @@ struct Kit: ParsableCommand {
 			P15_1_1_Sweep.self,
 			P17_1_1_LightWater02.self,
 			P18_1_1_SevenSegmentDisplay.self,
+			P18_2_1_StopWatch.self,
 		]
 	)
 }
