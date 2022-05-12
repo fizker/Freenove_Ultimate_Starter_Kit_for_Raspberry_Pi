@@ -11,7 +11,7 @@ public struct P17_1_1_LightWater02: ParsableCommand {
 
 	public mutating func run() throws {
 		let chip = try SN74HC595N(
-			gpioController: GPIOs(),
+			gpioController: .init(),
 			dataPin: .p17,
 			updatePin: .p27,
 			shiftPin: .p22,

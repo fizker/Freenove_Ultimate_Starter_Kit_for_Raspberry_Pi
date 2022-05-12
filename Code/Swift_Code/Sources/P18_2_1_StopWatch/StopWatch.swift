@@ -26,7 +26,7 @@ public struct P18_2_1_StopWatch: ParsableCommand {
 	public static let configuration = CommandConfiguration(commandName: "18.2.1_StopWatch")
 
 	public mutating func run() throws {
-		let gpioController = GPIOs()
+		let gpioController = GPIOController()
 
 		let digitPins: [GPIO.Pin] = [
 			.p17,

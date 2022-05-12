@@ -18,7 +18,7 @@ public struct P05_1_1_ColorfulLED: ParsableCommand {
 	public func run() throws {
 		print("Starting")
 
-		let gpio = GPIOs()
+		let gpio = GPIOController()
 
 		var red = try gpio.softwarePulseWidthModulation(for: .p17)
 		var green = try gpio.softwarePulseWidthModulation(for: .p18)

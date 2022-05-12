@@ -1,7 +1,7 @@
 import SwiftGPIO
 import SwiftyGPIO
 
-extension GPIOs {
+extension GPIOController {
 	public convenience init() {
 		self.init(board: .raspberryPi3)
 	}

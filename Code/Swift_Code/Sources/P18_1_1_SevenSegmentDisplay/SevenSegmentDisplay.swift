@@ -9,7 +9,7 @@ public struct P18_1_1_SevenSegmentDisplay: ParsableCommand {
 
 	public mutating func run() throws {
 		let chip = try SN74HC595N(
-			gpioController: GPIOs(),
+			gpioController: .init(),
 			dataPin: .p17,
 			updatePin: .p27,
 			shiftPin: .p22,

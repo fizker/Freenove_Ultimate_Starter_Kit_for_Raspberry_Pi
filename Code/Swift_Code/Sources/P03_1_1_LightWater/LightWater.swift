@@ -8,7 +8,7 @@ public struct P03_1_1_LightWater: ParsableCommand {
 	public static let configuration = CommandConfiguration(commandName: "03.1.1_LightWater")
 
 	public mutating func run() throws {
-		let controller = GPIOs()
+		let controller = GPIOController()
 		let pins: [GPIO.Pin] = [
 			.p17, // C:0
 			.p18, // C:1

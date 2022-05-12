@@ -13,7 +13,7 @@ public struct P07_1_1_ADC: ParsableCommand {
 		let maxVoltage = 3.3
 		let maxValue = 255.0
 
-		let gpio = GPIOs()
+		let gpio = GPIOController()
 		let adc = try gpio.hardwareI2C(device: .new)
 
 		while true {

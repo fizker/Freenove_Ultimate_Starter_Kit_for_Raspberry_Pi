@@ -27,7 +27,7 @@ public struct P02_1_1_ButtonLED: ParsableCommand {
 	public static let configuration = CommandConfiguration(commandName: "02.1.1_ButtonLED")
 
 	public mutating func run() throws {
-		let gpios = GPIOs()
+		let gpios = GPIOController()
 
 		var board = Board(led: try gpios.gpio(pin: .p17, direction: .out), button: try gpios.gpio(pin: .p18, direction: .in))
 

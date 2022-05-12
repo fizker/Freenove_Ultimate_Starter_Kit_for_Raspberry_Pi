@@ -128,7 +128,7 @@ public class SN74HC595N {
 	/// - parameter enabledOutput: The initial output value. This defaults to all-disabled.
 	/// - parameter enabledValue: The value to send for enabled outputs. This defaults to `.on`.
 	public init(
-		gpioController: GPIOs,
+		gpioController: GPIOController,
 		dataPin: GPIO.Pin,
 		updatePin: GPIO.Pin,
 		shiftPin: GPIO.Pin,

@@ -17,7 +17,7 @@ public struct P15_1_1_Sweep: ParsableCommand {
 	public static let configuration = CommandConfiguration(commandName: "15.1.1_Sweep")
 
 	public mutating func run() throws {
-		let gpio = GPIOs()
+		let gpio = GPIOController()
 		var servo = try gpio.softwarePulseWidthModulation(for: .p18, hz: 50)
 
 		func writeAll<T: Sequence>(_ all: T) where T.Element == Float {

@@ -11,7 +11,7 @@ public struct P04_1_1_BreathingLED: ParsableCommand {
 
 	public func run() throws {
 		print("Starting")
-		let gpio = GPIOs()
+		let gpio = GPIOController()
 		let pwm = gpio.pwm()
 
 		guard var pwm = try pwm?.pwm(named: .P18)
