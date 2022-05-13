@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "swift-argument-parser",
-        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
-        "state": {
-          "branch": null,
-          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
-          "version": "1.0.3"
-        }
-      },
-      {
-        "package": "swift-gpio",
-        "repositoryURL": "https://github.com/fizker/swift-gpio.git",
-        "state": {
-          "branch": null,
-          "revision": "e4e076ac3355992a477edc4027e878c9ab79befb",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "SwiftyGPIO",
-        "repositoryURL": "https://github.com/uraimo/SwiftyGPIO.git",
-        "state": {
-          "branch": null,
-          "revision": "1754dc31e4d648c6999b3e664d8669d1a87c22eb",
-          "version": "1.3.9"
-        }
+  "pins" : [
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "f3c9084a71ef4376f2fabbdf1d3d90a49f1fabdb",
+        "version" : "1.1.2"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "swift-gpio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fizker/swift-gpio.git",
+      "state" : {
+        "revision" : "e4e076ac3355992a477edc4027e878c9ab79befb",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "swiftygpio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uraimo/SwiftyGPIO.git",
+      "state" : {
+        "revision" : "1754dc31e4d648c6999b3e664d8669d1a87c22eb",
+        "version" : "1.3.9"
+      }
+    }
+  ],
+  "version" : 2
 }

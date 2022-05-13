@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
 	name: "kit",
 	platforms: [
-		.macOS(.v10_12),
+		.macOS(.v10_15),
 	],
 	products: [
 		.executable(
@@ -15,12 +15,12 @@ let package = Package(
 		),
 	],
 	dependencies: [
-		.package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.3"),
+		.package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.1.2"),
 		.package(url: "https://github.com/uraimo/SwiftyGPIO.git", from: "1.3.9"),
 		.package(url: "https://github.com/fizker/swift-gpio.git", from: "0.2.0"),
 	],
 	targets: [
-		.target(
+		.executableTarget(
 			name: "cli",
 			dependencies: [
 				.product(name: "ArgumentParser", package: "swift-argument-parser"),

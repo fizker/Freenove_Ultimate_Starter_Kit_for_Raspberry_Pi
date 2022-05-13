@@ -7,7 +7,7 @@ build:
 start-build-server:
 	docker run -it --rm \
 		--mount type=bind,source="$(shell pwd)"/,destination=/code,consistency=cached \
-		swiftarm/swift:5.4.1-ubuntu-21.04
+		swift:5.6-focal
 
 node_modules/.bin/serve:
 	echo '{"dependencies":{"serve":"*"}}' > package.json

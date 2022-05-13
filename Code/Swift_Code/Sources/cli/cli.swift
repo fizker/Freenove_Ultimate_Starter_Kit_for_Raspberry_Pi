@@ -11,7 +11,8 @@ import P17_1_1_LightWater02
 import P18_1_1_SevenSegmentDisplay
 import P18_2_1_StopWatch
 
-struct Kit: ParsableCommand {
+@main
+struct Kit: AsyncParsableCommand {
 	static var configuration = CommandConfiguration(
 		subcommands: [
 			P00_0_0_Hello.self,
@@ -28,5 +29,3 @@ struct Kit: ParsableCommand {
 		]
 	)
 }
-
-Kit.main()
