@@ -1,0 +1,14 @@
+#!/bin/bash
+
+name=kit
+
+wget -O $name http://192.168.38.104:35000/kit
+chmod +x $name
+./$name --generate-completion-script bash > $name-completion.bash
+
+# We cannot do that here, since this is a sub-shell that will be closed soon
+#source $name-completion.bash
+
+echo $name fetched
+echo To get tab-completion, run
+echo "    source $name-completion.bash"
