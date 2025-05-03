@@ -7,7 +7,7 @@ build:
 start-build-server:
 	docker run -it --rm \
 		--mount type=bind,source="$(shell pwd)"/,destination=/code,consistency=cached \
-		swift:5.6-focal
+		swift:5.10-noble
 
 node_modules/.bin/serve:
 	echo '{"dependencies":{"serve":"*"}}' > package.json
