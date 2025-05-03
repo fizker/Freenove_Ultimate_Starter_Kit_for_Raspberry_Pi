@@ -16,3 +16,6 @@ node_modules/.bin/serve:
 
 host-file-server: node_modules/.bin/serve
 	./node_modules/.bin/serve -l 35000 .build/debug
+
+host-script-server: node_modules/.bin/serve
+	./node_modules/.bin/serve -l 35001 raspberry-scripts
