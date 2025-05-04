@@ -1,5 +1,5 @@
 {
-  "originHash" : "ff5e27bc017056645706c323717fedf661f079550a9217e963e3ec528f1790d8",
+  "originHash" : "65e3f521acc201666a059db4e1454ea6eb223a04e6db0babb8ae6ceea73845e8",
   "pins" : [
     {
       "identity" : "swift-argument-parser",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fizker/swift-gpio.git",
       "state" : {
-        "branch" : "refactor-to-wiringpi",
-        "revision" : "e5773bc320c435e78ba99f89dd906cfe0c648369"
+        "revision" : "d6857e0864fd7837bbb5b695190191fd7add86ec",
+        "version" : "0.3.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fizker/swift-wiringpi.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "1265633d28003833865fec17651fb3fa814d8fb9"
+        "revision" : "1265633d28003833865fec17651fb3fa814d8fb9",
+        "version" : "0.1.0"
       }
     }
   ],

@@ -16,7 +16,7 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.1.2"),
-		.package(url: "https://github.com/fizker/swift-gpio.git", branch: "refactor-to-wiringpi"),
+		.package(url: "https://github.com/fizker/swift-gpio.git", .upToNextMinor(from: "0.3.0")),
 	],
 	targets: [
 		.executableTarget(
