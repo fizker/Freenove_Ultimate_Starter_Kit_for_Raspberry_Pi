@@ -16,7 +16,7 @@
       "location" : "https://github.com/fizker/swift-gpio.git",
       "state" : {
         "branch" : "refactor-to-wiringpi",
-        "revision" : "347efda70e7a40ffbd1ec7a8791a28240ef07bcf"
+        "revision" : "e055ff5a04a941ddf00deda76e961bd01ae40902"
       }
     },
     {
