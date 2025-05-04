@@ -24,7 +24,10 @@ enum ButtonStatus: RawRepresentable {
 public struct P02_1_1_ButtonLED: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "02.1.1_ButtonLED")
+	public static let configuration = CommandConfiguration(
+		commandName: "02.1.1",
+		abstract: "ButtonLED"
+	)
 
 	public mutating func run() throws {
 		let gpios = GPIOController()

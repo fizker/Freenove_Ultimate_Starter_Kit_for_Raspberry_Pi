@@ -14,7 +14,10 @@ public struct P15_1_1_Sweep: ParsableCommand {
 		servo_max = offset_ms + 12.5
 	}
 
-	public static let configuration = CommandConfiguration(commandName: "15.1.1_Sweep")
+	public static let configuration = CommandConfiguration(
+		commandName: "15.1.1",
+		abstract: "Sweep"
+	)
 
 	public mutating func run() throws {
 		let gpio = GPIOController()

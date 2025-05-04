@@ -23,7 +23,10 @@ extension GPIO.Value {
 public struct P18_2_1_StopWatch: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "18.2.1_StopWatch")
+	public static let configuration = CommandConfiguration(
+		commandName: "18.2.1",
+		abstract: "StopWatch"
+	)
 
 	public mutating func run() throws {
 		let gpioController = GPIOController()

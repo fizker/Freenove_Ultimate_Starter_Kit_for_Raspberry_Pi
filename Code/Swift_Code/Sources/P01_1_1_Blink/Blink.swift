@@ -6,7 +6,10 @@ import Shared
 public struct P01_1_1_Blink: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "01.1.1_Blink")
+	public static let configuration = CommandConfiguration(
+		commandName: "01.1.1",
+		abstract: "Blink"
+	)
 
 	public func run() throws {
 		let gpio = GPIOController()

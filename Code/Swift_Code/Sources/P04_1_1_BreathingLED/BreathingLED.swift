@@ -4,7 +4,10 @@ import SwiftGPIO
 import Shared
 
 public struct P04_1_1_BreathingLED: ParsableCommand {
-	public static var configuration = CommandConfiguration(commandName: "04.1.1_BreathingLED")
+	public static var configuration = CommandConfiguration(
+		commandName: "04.1.1",
+		abstract: "BreathingLED"
+	)
 
 	public init() {
 	}

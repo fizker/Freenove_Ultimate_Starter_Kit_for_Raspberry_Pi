@@ -7,7 +7,10 @@ public struct P07_1_1_ADC: ParsableCommand {
 
 	}
 
-	public static var configuration = CommandConfiguration(commandName: "07.1.1_ADC")
+	public static var configuration = CommandConfiguration(
+		commandName: "07.1.1",
+		abstract: "ADC"
+	)
 
 	public func run() throws {
 		let maxVoltage = 3.3

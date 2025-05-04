@@ -7,7 +7,10 @@ typealias Output = SN74HC595N.Output
 public struct P17_1_1_LightWater02: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "17.1.1_LightWater02")
+	public static let configuration = CommandConfiguration(
+		commandName: "17.1.1",
+		abstract: "LightWater02"
+	)
 
 	public mutating func run() throws {
 		let chip = try SN74HC595N(

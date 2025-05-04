@@ -5,7 +5,10 @@ import Shared
 public struct P03_1_1_LightWater: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "03.1.1_LightWater")
+	public static let configuration = CommandConfiguration(
+		commandName: "03.1.1",
+		abstract: "LightWater"
+	)
 
 	public mutating func run() throws {
 		let controller = GPIOController()

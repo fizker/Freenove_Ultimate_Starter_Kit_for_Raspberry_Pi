@@ -5,7 +5,10 @@ import Shared
 public struct P18_1_1_SevenSegmentDisplay: ParsableCommand {
 	public init() {}
 
-	public static let configuration = CommandConfiguration(commandName: "18.1.1_SevenSegmentDisplay")
+	public static let configuration = CommandConfiguration(
+		commandName: "18.1.1",
+		abstract: "SevenSegmentDisplay"
+	)
 
 	public mutating func run() throws {
 		let chip = try SN74HC595N(

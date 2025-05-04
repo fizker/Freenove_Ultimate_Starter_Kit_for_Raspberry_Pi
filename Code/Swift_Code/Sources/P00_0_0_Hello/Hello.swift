@@ -3,7 +3,10 @@ import ArgumentParser
 public struct P00_0_0_Hello: AsyncParsableCommand {
 	public init() {}
 
-	public static var configuration = CommandConfiguration(commandName: "00.0.0_Hello")
+	public static var configuration = CommandConfiguration(
+		commandName: "00.0.0",
+		abstract: "Hello"
+	)
 
 	public func run() async throws {
 		print("hello world")

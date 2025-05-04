@@ -13,7 +13,10 @@ public struct P05_1_1_ColorfulLED: ParsableCommand {
 
 	}
 
-	public static var configuration = CommandConfiguration(commandName: "05.1.1_ColorfulLED")
+	public static var configuration = CommandConfiguration(
+		commandName: "05.1.1",
+		abstract: "ColorfulLED"
+	)
 
 	public func run() throws {
 		print("Starting")
