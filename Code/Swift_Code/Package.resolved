@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fizker/swift-wiringpi.git",
       "state" : {
-        "revision" : "1265633d28003833865fec17651fb3fa814d8fb9",
-        "version" : "0.1.0"
+        "revision" : "83ddf201c874a58c940faaefbee658209014772a",
+        "version" : "0.1.1"
       }
     }
   ],

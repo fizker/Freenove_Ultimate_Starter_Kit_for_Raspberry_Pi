@@ -5,9 +5,10 @@ build:
 	swift build
 
 start-build-server:
+	docker build --tag swift-rpi:6.1-noble .
 	docker run -it --rm \
 		--mount type=bind,source="$(shell pwd)"/,destination=/code,consistency=cached \
-		swift:6.1-noble
+		swift-rpi:6.1-noble
 
 node_modules/.bin/serve:
 	echo '{"dependencies":{"serve":"*"}}' > package.json
