@@ -1,5 +1,5 @@
 {
-  "originHash" : "65e3f521acc201666a059db4e1454ea6eb223a04e6db0babb8ae6ceea73845e8",
+  "originHash" : "3f11045b5f3ce4ed8ed473a69824b2575500426d9d6d0aedf288458b32c47fdc",
   "pins" : [
     {
       "identity" : "swift-argument-parser",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fizker/swift-wiringpi.git",
       "state" : {
-        "revision" : "83ddf201c874a58c940faaefbee658209014772a",
-        "version" : "0.1.1"
+        "revision" : "5bddc0d14ffe3f0202515fc0e321f76b51cbcfbb",
+        "version" : "0.1.2"
       }
     }
   ],
