@@ -16,8 +16,8 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.1.2"),
-		.package(url: "https://github.com/fizker/SwiftyGPIO.git", branch: "1.4.5-unwrap-optionals"),
-		.package(url: "https://github.com/fizker/swift-gpio.git", from: "0.2.1"),
+		.package(url: "https://github.com/fizker/swift-gpio.git", .upToNextMinor(from: "0.3.0")),
+		.package(url: "https://github.com/fizker/swift-wiringpi.git", .upToNextMinor(from: "0.1.2")),
 	],
 	targets: [
 		.executableTarget(
@@ -117,7 +117,6 @@ let package = Package(
 			name: "Shared",
 			dependencies: [
 				.product(name: "SwiftGPIO", package: "swift-gpio"),
-				"SwiftyGPIO",
 			]
 		),
 		.testTarget(
